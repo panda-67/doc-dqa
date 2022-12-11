@@ -1,36 +1,45 @@
 import React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 
 const Menu = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx {
+      allMdx(sort: {frontmatter: {order: ASC}}) {
         nodes {
           id
           fields {
             slug
           }
-          body
           frontmatter {
             title
           }
         }
       }
     }
-  `);
+  `)
   return (
     <>
       <div>
         <ul>
+          <li className="py-2 hover:translate-x-2 duration-300">
+            <h5 className="md:text-[15px] md:font-semibold">
+              <Link to="/" activeClassName="border-b border-dqa pb-1.5">
+                Prolog
+              </Link>
+            </h5>
+          </li>
           {data.allMdx.nodes.map((node) => (
-            <li key={node.id}>
-              <h5 className="md:text-[15px]">
-                <Link to={`/${node.fields.slug}`}>
+            <li key={node.id} className="py-2 hover:translate-x-2 duration-300">
+              <h5 className="md:text-[15px] md:font-semibold">
+                <Link
+                  to={`/${node.fields.slug}`}
+                  activeClassName="border-b border-dqa pb-1.5"
+                >
                   {node.frontmatter.title}
                 </Link>
               </h5>
             </li>
-          ))}{" "}
+          ))}
         </ul>
       </div>
     </>

@@ -1,9 +1,20 @@
-const path = require("path");
-const slugify = require(`@sindresorhus/slugify`);
-const contentTemplate = path.resolve(`./src/templates/content.jsx`);
+const path = require("path")
+const slugify = require(`@sindresorhus/slugify`)
+const contentTemplate = path.resolve(`./src/templates/content.jsx`)
+
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `Mdx`) {
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slugify(node.frontmatter.title)
+    })
+  }
+}
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
 
   const result = await graphql(`
     query {
@@ -19,14 +30,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
     }
-  `);
+  `)
 
   if (result.errors) {
-    reporter.panicOnBuild("Error loading MDX result", result.errors);
+    reporter.panicOnBuild("Error loading MDX result", result.errors)
   }
 
   // Create blog post pages.
-  const content = result.data.allMdx.nodes;
+  const content = result.data.allMdx.nodes
 
   // you'll call `createPage` for each result
   content.forEach((node) => {
@@ -39,17 +50,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },
-    });
-  });
-};
-
-exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions;
-  if (node.internal.type === `Mdx`) {
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slugify(node.frontmatter.title)
-    });
-  }
-};
+    })
+  })
+}

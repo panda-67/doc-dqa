@@ -26,7 +26,15 @@
     @apply text-xs;
   }
 
+  p {
+    @apply pb-2;
+  }
+
   .container {
-    @apply py-4 px-8;
+    @apply py-4 px-10;
+  }
+
+  .content a {
+    @apply hover:text-sky-700;
   }
 }

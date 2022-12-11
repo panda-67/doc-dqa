@@ -11,3 +11,10 @@ $ yarn
 
 $ yarn dev
 ```
+### Deploy
+
+```
+$ yarn build
+
+$ yarn deploy
+```

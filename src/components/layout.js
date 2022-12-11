@@ -1,35 +1,39 @@
-import React from "react";
-import { Link } from "gatsby";
-import Menu from "./menu";
-import { StaticImage } from "gatsby-plugin-image";
+import React from "react"
+import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
+import Menu from "./menu"
 
 const Layout = ({ children }) => {
-  return (
-    <>
-      <div className="grid grid-cols-5">
-        <div className="col-span-1 h-full border-r-8 border-dqa">
-          <div className="container ">
-            <Link to="/">
-              <StaticImage
-                src="../images/logo.png"
-                alt="Darul Quran Aceh"
-                placeholder="blurred"
-                width={120}
-                height={100}
-              />
-              <h3>DQA Dokumentasi</h3>
-            </Link>
-            <Menu />
-          </div>
-        </div>
-        <div className="col-span-4">
-          <div className="container">{children}</div>
-        </div>
-      </div>
-    </>
-  );
-};
+	return (
+		<>
+			<div className="grid grid-cols-12">
+				<div className="col-span-3 mr-6 bg-stone-100">
+					<div className="container">
+						<div className="pb-8">
+							<Link to="/">
+								<StaticImage src="../images/logo.png" alt="Darul Quran Aceh" placeholder="blurred"
+									height={90} />
+							</Link>
+						</div>
+						<Menu />
+					</div>
+				</div>
+				<div className="col-span-9 pt-10">
+					<div className="container mx-8">
+						<input name="search" placeholder="Search ...." className="border-b border-b-dqa pb-2 focus:border-none" />
+					</div>
+					<div className="container">
+						{children}
+					</div>
+					<footer>
+						<div className="flex justify-center mt-16 py-4 text-[14px]">
+							<div>2018 - 2023 &copy Darul Quran Aceh.</div>
+						</div>
+					</footer>
+				</div>
+			</div>
+		</>
+	)
+}
 
-export default Layout;
-
-export const Head = () => <title>DQA</title>;
+export default Layout

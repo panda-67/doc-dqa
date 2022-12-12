@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 const IndexPage = () => {
 	return (
 		<Layout>
-			<div className="min-h-screen px-8 pt-2">
+			<div className="content min-h-screen px-8 pt-2">
 				<h2 className="text-dqa">Dokumentasi</h2>
 				<h3>Halaman Admin Darul Quran Aceh</h3>
 				<p>

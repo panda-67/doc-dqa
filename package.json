@@ -9,9 +9,10 @@
   ],
   "scripts": {
     "dev": "gatsby develop",
+    "refresh": "gatsby clean && gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
-    "deploy": "gh-pages -d public",
+    "deploy": "gatsby build && gh-pages -d public",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
@@ -21,8 +22,10 @@
     "@mdx-js/react": "^2.1.5",
     "@sindresorhus/slugify": "^1",
     "eslint": "^8.29.0",
+    "formik": "^2.2.9",
     "gatsby": "^5.2.0",
     "gatsby-plugin-image": "^3.2.0",
+    "gatsby-plugin-local-search": "^2.0.1",
     "gatsby-plugin-mdx": "^5.2.0",
     "gatsby-plugin-sharp": "^5.2.0",
     "gatsby-remark-autolink-headers": "^6.2.0",
@@ -32,6 +35,7 @@
     "gatsby-transformer-sharp": "^5.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-use-flexsearch": "^0.1.1",
     "rehype-slug": "^5.1.0",
     "rehype-slug-custom-id": "^1.1.0",
     "typescript": "^4.9.4",
@@ -40,6 +44,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.13",
     "gatsby-plugin-postcss": "^6.2.0",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.19",
     "tailwindcss": "^3.2.4"
   }

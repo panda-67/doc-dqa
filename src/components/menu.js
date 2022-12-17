@@ -23,17 +23,17 @@ const Menu = () => {
         <ul>
           <li className="py-2 hover:translate-x-2 duration-300">
             <h5 className="md:text-[15px] md:font-semibold">
-              <Link to="/" activeClassName="border-b border-dqa pb-1.5">
+              <Link to="/" activeClassName="border-b border-dqa pb-3">
                 Prolog
               </Link>
             </h5>
           </li>
           {data.allMdx.nodes.map((node) => (
             <li key={node.id} className="py-2 hover:translate-x-2 duration-300">
-              <h5 className="md:text-[15px] md:font-semibold">
+              <h5 className="md:text-[15px] md:font-semibold leading-10">
                 <Link
                   to={`/${node.fields.slug}`}
-                  activeClassName="border-b border-dqa leading-8 pb-1.5"
+                  activeClassName="border-b border-dqa pb-3"
                 >
                   {node.frontmatter.title}
                 </Link>

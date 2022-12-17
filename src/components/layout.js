@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import Menu from "./menu"
+import SearchBar from "./search"
 
 const Layout = ({ children }) => {
 	return (
@@ -20,7 +21,7 @@ const Layout = ({ children }) => {
 				</div>
 				<div className="col-span-12 md:col-span-9 pt-10">
 					<div className="container md:mx-8">
-						<input name="search" placeholder="Search ...." className="border-b border-b-dqa pb-2 focus:border-none" />
+						<SearchBar />
 					</div>
 					<div className="container">
 						{children}

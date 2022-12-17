@@ -12,6 +12,42 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-postcss`,
     {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+        // A unique name for the search index. This should be descriptive of
+        // what the index contains. This is required.
+        name: 'pages',
+        engine: 'flexsearch',
+        engineOptions: 'speed',
+        query: `
+          {
+            allMdx(sort: {frontmatter: {order: ASC}}) {
+              nodes {
+                id
+                fields {
+                  slug
+                }
+                frontmatter {
+                  title
+                }
+                body
+              }
+            }
+          }
+        `,
+        ref: 'id',
+        index: ['title', 'body'],
+        store: ['id', 'path', 'title'],
+        normalizer: ({ data }) =>
+          data.allMdx.nodes.map((node) => ({
+            id: node.id,
+            path: `/${node.fields.slug}`,
+            title: node.frontmatter.title,
+            body: node.body,
+          })),
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [

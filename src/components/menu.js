@@ -33,7 +33,7 @@ const Menu = () => {
               <h5 className="md:text-[15px] md:font-semibold">
                 <Link
                   to={`/${node.fields.slug}`}
-                  activeClassName="border-b border-dqa pb-1.5"
+                  activeClassName="border-b border-dqa leading-8 pb-1.5"
                 >
                   {node.frontmatter.title}
                 </Link>

@@ -5,10 +5,10 @@ import Layout from "../components/layout"
 const IndexPage = () => {
 	return (
 		<Layout>
-			<div className="content min-h-screen px-8 pt-2">
+			<div className="content min-h-screen md:px-8 pt-2">
 				<h2 className="text-dqa">Dokumentasi</h2>
 				<h3>Halaman Admin Darul Quran Aceh</h3>
-				<p>
+				<>
 					Dokumentasi ini dibuat untuk memudahkan admin dalam pengelolaan
 					website
 					<Link href="https://dqa.sch.id" className="text-blue-600 hover:italic">
@@ -19,7 +19,7 @@ const IndexPage = () => {
 					<Link href="https://dqa.sch.id" className="text-blue-600 hover:italic">
 						{" "}Darul Quran Aceh. {" "}
 					</Link>
-				</p>
+				</>
 			</div>
 		</Layout>
 	)

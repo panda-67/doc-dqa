@@ -30,7 +30,7 @@ const Menu = () => {
           </li>
           {data.allMdx.nodes.map((node) => (
             <li key={node.id} className="py-2 hover:translate-x-2 duration-300">
-              <h5 className="md:text-[15px] md:font-semibold leading-8 md:leading-10">
+              <h5 className="md:text-[15px] md:font-semibold leading-10">
                 <Link
                   to={`/${node.fields.slug}`}
                   activeClassName="border-b border-dqa pb-3"

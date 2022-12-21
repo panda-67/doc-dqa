@@ -25,11 +25,11 @@ const SearchBar = () => {
             }}
          >
             <Form>
-               <Field name="query" placeholder="Cari ...." className="py-2 border-b border-dqa outline-none" />
+               <Field name="query" placeholder="Cari ...." className="w-full py-2 dark:bg-stone-800 border-b border-dqa outline-none" />
             </Form>
          </Formik>
-         {/* <h4 className='md:text-xl md:font-semibold'>Results</h4> */}
          <ul className='mt-2'>
+            {query ? <h4 className='font-semibold text-dqa'>Hasil pencarian untuk {query}.</h4> : null}
             {results.map(result => (
                <li key={result.id} className="content py-0.5 text-dqa hover:font-semibold hover:translate-x-2 duration-300">
                   <Link to={result.path}>{result.title}</Link>

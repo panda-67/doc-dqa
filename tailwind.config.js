@@ -10,6 +10,7 @@ module.exports = {
     "./src/templates/*.{js,jsx,ts,tsx}",
     "./src/templates/**/*.{js,jsx,ts,tsx}",
   ],
+  darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
       fontFamily: {

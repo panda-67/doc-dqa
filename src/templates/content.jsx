@@ -8,9 +8,11 @@ const shortcodes = { Link }; // Provide common components here
 const Template = ({ data, children }) => {
 	return (
 		<Layout>
-			<div className="content min-h-screen md:px-8 pt-2">
+			<div className="content md:px-8 pt-2">
 				<h2 className=" text-dqa">{data.mdx.frontmatter.title}</h2>
 				<MDXProvider components={shortcodes}>{children}</MDXProvider>
+				<br/><br/>
+				<>Demikianlah penjelasan pada bagian {data.mdx.frontmatter.title}, semoga dapat bermanfaat. Bila kurang jelas silahkan menghubungi developer.</>
 			</div>
 		</Layout>
 	)

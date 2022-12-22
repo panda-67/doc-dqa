@@ -25,7 +25,7 @@ const SearchBar = () => {
             }}
          >
             <Form>
-               <Field name="query" placeholder="Cari ...." className="w-full py-2 bg-white dark:bg-stone-800 border-b border-dqa outline-none duration-500 ease-in" />
+               <Field name="query" placeholder="Cari ...." className="w-full py-2 bg-white dark:bg-stone-800 border-b border-dqa outline-none duration-300 ease-in" />
             </Form>
          </Formik>
          <ul className='mt-2'>

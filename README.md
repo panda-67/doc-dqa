@@ -5,9 +5,14 @@
 
 #### Install NodeJs
 
-Run on terminal
+### Development
+
 ```
-$ yarn
+$ yarn 
+
+or 
+
+$ yarn install
 
 $ yarn dev
 ```
@@ -15,7 +20,5 @@ $ yarn dev
 ### Deploy
 
 ```
-$ yarn build
-
 $ yarn deploy
 ```

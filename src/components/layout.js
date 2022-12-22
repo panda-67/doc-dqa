@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
 
 	return (
 		<>
-			<div className="md:grid grid-cols-12 dark:bg-stone-800 dark:text-white duration-500 ease-in">
+			<div className="h-full md:grid grid-cols-12 bg-white dark:bg-stone-800 dark:text-white duration-300 ease-in">
 
 				{/* Toggle Navbar */}
 				<div className="mt-6 mr-6 absolute right-3 z-20 md:hidden block">
@@ -64,8 +64,8 @@ const Layout = ({ children }) => {
 				</div>
 
 				{/* Left Navbar */}
-				<div className={`md:col-span-3 md:mr-6 bg-stone-100 dark:bg-stone-700 md:block absolute md:relative z-10 w-full h-screen md:w-auto md:h-auto duration-[400ms] ease-in ${navbarOpen ? "transform translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
-					<div className="container">
+				<div className={`w-full min-h-screen h-max md:w-auto md:h-auto md:col-span-3 md:mr-6 md:block absolute md:relative z-10  duration-[400ms] ease-in ${navbarOpen ? "transform translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
+					<div className="container h-full bg-stone-100 dark:bg-stone-700 dark:text-white duration-300 ease-in">
 						<div className="pb-8">
 							<Link to="/">
 								<StaticImage src="../images/logo.png" alt="Darul Quran Aceh" placeholder="blurred"

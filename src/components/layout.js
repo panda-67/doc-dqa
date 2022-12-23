@@ -6,6 +6,7 @@ import SearchBar from "./search"
 import Menu from "./menu"
 
 const Layout = ({ children }) => {
+	
 	const [navbarOpen, setNavbarOpen] = useState(false)
 	const [searchOpen, setSeacrhOpen] = useState(false)
 	const [themeDark, setTheme] = useState(false)

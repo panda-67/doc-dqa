@@ -64,8 +64,8 @@ const Layout = ({ children }) => {
 				</div>
 
 				{/* Left Navbar */}
-				<div className={`w-full min-h-screen h-max md:w-auto md:h-auto md:col-span-3 md:mr-6 md:block absolute md:relative z-10  duration-[400ms] ease-in ${navbarOpen ? "transform translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
-					<div className="container h-full bg-stone-100 dark:bg-stone-700 dark:text-white duration-300 ease-in">
+				<div className={`md:col-span-3 md:mr-6 md:block w-full min-h-screen h-max md:w-auto md:h-auto absolute md:relative z-10  duration-[400ms] ease-in ${navbarOpen ? "transform translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
+					<div className="container h-full bg-stone-100 dark:bg-stone-700 text-black dark:text-white duration-300 ease-in">
 						<div className="pb-8">
 							<Link to="/">
 								<StaticImage src="../images/logo.png" alt="Darul Quran Aceh" placeholder="blurred"

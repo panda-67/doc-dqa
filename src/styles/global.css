@@ -54,7 +54,7 @@
   }
 
   .content ol li {
-    @apply ml-8 pl-2 mb-2;
+    @apply list-item ml-8 pl-2 mb-2;
   }
 
   .content ul {
@@ -62,6 +62,6 @@
   }
 
   .content ul li {
-    @apply ml-8 pl-2 mb-2;
+    @apply list-item ml-8 pl-2 mb-2;
   }
 }

@@ -18,7 +18,7 @@ const Template = ({ data: { mdx }, children }) => {
 		<Layout>
 			<div className="md:px-8 pt-2">
 				<h2 className=" text-dqa">{mdx.frontmatter.title}</h2>
-				
+
 				<div className="my-2 -ml-1 px-4 py-3 rounded-lg bg-stone-100 dark:bg-stone-700 duration-300 ease-in">
 					<button onClick={tocToggle} className="font-light hover:text-dqa">Daftar Isi</button>
 					<ul className={`ml-2 ${tocOpen ? '' : 'hidden'}`}>
@@ -29,11 +29,11 @@ const Template = ({ data: { mdx }, children }) => {
 						))}
 					</ul>
 				</div>
-
+				
 				<div className="content">
 					<MDXProvider components={shortcodes}>{children}</MDXProvider>
 				</div>
-				
+
 				<br /><br />
 				<>Demikianlah penjelasan pada bagian {mdx.frontmatter.title}, semoga dapat bermanfaat. Bila kurang jelas silahkan menghubungi developer.</>
 			</div>

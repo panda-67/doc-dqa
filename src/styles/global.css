@@ -64,4 +64,10 @@
   .content ul li {
     @apply list-item ml-8 pl-2 mb-2;
   }
+
+  .scroll-bar {
+    scrollbar-color: green;
+    scrollbar-width: thin;
+    
+  }
 }

@@ -1,39 +1,39 @@
-import React, { useState, useEffect } from "react"
-import { themeChange } from 'theme-change'
-import { StaticImage } from "gatsby-plugin-image"
-import { Link } from "gatsby"
+import React, { useEffect, useState } from "react"
+import createPersistedState from 'use-persisted-state'
+import { themeChange } from "theme-change"
 import SearchBar from "./search"
 import Menu from "./menu"
 
-const Layout = ({ children }) => {
+
+export default function Layout({ children }) {
 
 	const [navbarOpen, setNavbarOpen] = useState(false)
+	const menuToggle = () => { setNavbarOpen(!navbarOpen) }
+
 	const [searchOpen, setSeacrhOpen] = useState(false)
+	const seacrhToggle = () => { setSeacrhOpen(!searchOpen) }
 
-	const menuToggle = () => {
-		setNavbarOpen(!navbarOpen)
-	}
-
-	const seacrhToggle = () => {
-		setSeacrhOpen(!searchOpen)
-	}
-
-	useEffect(() => {
-		themeChange(false)
-	}, [])
+	const useThemeState = createPersistedState('themeDark');
+	const [themeDark, setThemeDark] = useThemeState(false)
+	const themeToggle = () => { setThemeDark(!themeDark) }
+	useEffect(() => { themeChange(false) }, [])
 
 	var year = new Date().getFullYear()
 
 	return (
-		<>
-			<div className="h-full md:grid grid-cols-12 bg-white dark:bg-stone-800 dark:text-white duration-300 ease-in">
-				<div className="mt-6 mr-6 absolute right-3 z-20 md:hidden block">
+		<div>
+			<div className="h-full md:flex md:flex-wrap bg-white dark:bg-stone-800 dark:text-white duration-300 ease-in">
+				<div className="mt-6 mr-6 inline-flex gap-2 items-center absolute right-3 z-20 md:hidden">
 
 					{/* Theme Toggle */}
-					<div className="absolute right-10">
-						{/* {getTheme} */}
-						<button data-toggle-theme="light,dark" data-act-class="ACTIVECLASS">
-							<svg viewBox="0 0 24 24" fill="none" className="w-6 h-6"><path fillRule="evenodd" clipRule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"></path><path d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z" className="fill-current"></path><path fillRule="evenodd" clipRule="evenodd" d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z" className="fill-current"></path></svg>
+					<div className="absolute right-8">
+						<button onClick={themeToggle} data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
+							{themeDark
+								? <svg viewBox="0 0 24 24" fill="currentColor" className="-mr-1 -mb-1 w-5 h-5"><path fillRule="evenodd" clipRule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"></path></svg>
+								: <>
+									☀
+								</>
+							}
 						</button>
 					</div>
 
@@ -67,18 +67,14 @@ const Layout = ({ children }) => {
 				</div>
 
 				{/* Left Navbar */}
-				<div className={`md:col-span-3 md:mr-6 md:block w-full min-h-screen h-max md:w-auto md:h-auto absolute md:relative z-10  duration-[400ms] ease-in ${navbarOpen ? "transform translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
-					<div className="container h-full bg-stone-100 dark:bg-stone-700 text-black dark:text-white duration-300 ease-in">
-						<div className="pb-8">
-							<Link to="/">
-								<StaticImage src="../images/logo.png" alt="Darul Quran Aceh" placeholder="blurred"
-									height={90} />
-							</Link>
-						</div>
+				<div className={`md:w-3/12 md:mr-6 md:max-w-xs md:h-auto absolute md:fixed md:top-0 md:bottom-0 scroll-bar md:overflow-scroll bg-stone-100 dark:bg-stone-700 z-10 w-full min-h-screen h-max duration-300 ease-out ${navbarOpen ? "transform translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
+					<menu className="container bg-stone-100 dark:bg-stone-700 text-black dark:text-white duration-300 ease-in"  >
 						<Menu />
-					</div>
+					</menu>
 				</div>
-				<div className="md:col-span-9 pt-10">
+
+				{/* Main */}
+				<div className="md:h-auto absolute md:left-[320px] pt-10 bg-white dark:bg-stone-800 text-black dark:text-white duration-300 ease-in">
 
 					{/* Mobile search */}
 					<div className="container md:mx-8 md:hidden">
@@ -88,9 +84,16 @@ const Layout = ({ children }) => {
 					<div className="container mx-8 pt-3 pr-28 hidden md:block">
 
 						{/* Theme Toggle */}
-						<button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS" className="absolute right-20 top-13 pt-2">
-							<svg viewBox="0 0 24 24" fill="none" className="w-6 h-6"><path fillRule="evenodd" clipRule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"></path><path d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z" className="fill-current"></path><path fillRule="evenodd" clipRule="evenodd" d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z" className="fill-current"></path></svg>
-						</button>
+						<div className="absolute right-20 top-13 pt-2">
+							<button onClick={themeToggle} data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
+								{themeDark
+									? <svg viewBox="0 0 24 24" fill="currentColor" className="-mr-1 -mb-1 w-5 h-5"><path fillRule="evenodd" clipRule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"></path></svg>
+									: <>
+										☀
+									</>
+								}
+							</button>
+						</div>
 
 						{/* Toggle Search */}
 						<button onClick={seacrhToggle} className="py-2 border-b w-full border-dqa text-gray-400 text-left">
@@ -134,8 +137,6 @@ const Layout = ({ children }) => {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
-
-export default Layout

@@ -6,7 +6,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    @apply overflow-x-hidden;
+    @apply overflow-x-clip;
   }
 
   h1 {
@@ -67,7 +67,6 @@
 
   .scroll-bar {
     scrollbar-color: green;
-    scrollbar-width: thin;
-    
+    scrollbar-width: thin;    
   }
 }

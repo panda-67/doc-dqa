@@ -22,17 +22,16 @@ export default function Layout({ children }) {
 
 	return (
 		<div>
-			<div className="h-full md:flex md:flex-wrap bg-white dark:bg-stone-800 dark:text-white duration-300 ease-in">
+			<div className="h-full md:flex md:flex-wrap bg-white dark:bg-stone-800 dark:text-white overflow-x-clip ease-in">
 				<div className="mt-6 mr-6 inline-flex gap-2 items-center absolute right-3 z-20 md:hidden">
 
 					{/* Theme Toggle */}
 					<div className="absolute right-8">
 						<button onClick={themeToggle} data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
 							{themeDark
-								? <svg viewBox="0 0 24 24" fill="currentColor" className="-mr-1 -mb-1 w-5 h-5"><path fillRule="evenodd" clipRule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"></path></svg>
-								: <>
-									☀
-								</>
+								?<svg viewBox="0 0 24 24" fill="currentColor" className="-mr-1 -mb-1 w-5 h-5"><path fillRule="evenodd" clipRule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"></path></svg>
+								
+								:<>☀</>								
 							}
 						</button>
 					</div>
@@ -43,14 +42,14 @@ export default function Layout({ children }) {
 							? <svg
 								viewBox="0 0 16 16"
 								fill="currentColor"
-								className="h-5 cursor-pointer pt-1 pr-1 duration-700"
+								className="h-5 cursor-pointer pt-1 pr-1 duration-300"
 							>
 								<path
 									d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"
 								/>
 							</svg>
 							: <svg
-								className="h-6 w-6 cursor-pointer duration-500"
+								className="h-6 w-6 cursor-pointer duration-200"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
@@ -67,14 +66,14 @@ export default function Layout({ children }) {
 				</div>
 
 				{/* Left Navbar */}
-				<div className={`md:w-3/12 md:mr-6 md:max-w-xs md:h-auto absolute md:fixed md:top-0 md:bottom-0 scroll-bar md:overflow-scroll bg-stone-100 dark:bg-stone-700 z-10 w-full min-h-screen h-max duration-300 ease-out ${navbarOpen ? "transform translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
-					<menu className="container bg-stone-100 dark:bg-stone-700 text-black dark:text-white duration-300 ease-in"  >
+				<div className={`md:w-4/12 lg:w-3/12 md:h-auto absolute md:fixed md:top-0 md:bottom-0 scroll-bar md:overflow-scroll bg-stone-100 dark:bg-stone-700 z-10 w-full min-h-screen h-max overflow-y-clip duration-100 ease-out ${navbarOpen ? "transform translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
+					<menu className="container bg-stone-100 dark:bg-stone-700 text-black dark:text-white duration-100 ease-in"  >
 						<Menu />
 					</menu>
 				</div>
 
 				{/* Main */}
-				<div className="md:h-auto absolute md:left-[320px] pt-10 bg-white dark:bg-stone-800 text-black dark:text-white duration-300 ease-in">
+				<div className="md:h-auto w-full md:w-8/12 lg:w-9/12 right-0 absolute pt-10 bg-white dark:bg-stone-800 text-black dark:text-white duration-75 ease-in">
 
 					{/* Mobile search */}
 					<div className="container md:mx-8 md:hidden">
